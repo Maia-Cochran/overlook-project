@@ -8,7 +8,7 @@ describe('Room Info', () => {
     let room;
     let roomData;
     beforeEach(() => {
-        room = new Customer(roomData)
+        room = new Room(roomData)
     })
 
     it('should be a function', function() {

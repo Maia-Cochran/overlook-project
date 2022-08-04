@@ -14,7 +14,7 @@ describe('Customer Info', () => {
     it('should be a function', function() {
     expect(Customer).to.be.a('function');
     });    
-    it('should be an instance of Booking', function() {
+    it('should be an instance of Customer', function() {
         expect(customer).to.be.an.instanceOf(Customer);
 
     });
