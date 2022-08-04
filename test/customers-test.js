@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Booking from '../src/classes/bookings';
+import Customer from '../src/classes/customers';
 import customerData from '../src/data/customerData';
 const expect = chai.expect;
 
@@ -8,7 +8,7 @@ describe('Customer Info', () => {
     let customer;
     let customerData;
     beforeEach(() => {
-        customer = new Booking(customerData)
+        customer = new Customer(customerData)
     })
 
     it('should be a function', function() {
