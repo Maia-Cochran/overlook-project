@@ -14,8 +14,8 @@ describe('Booking Info', () => {
             "date": "2022/04/22",
             "roomNumber": 15,
           }
-        booking = new Booking(bookingData)
-    })
+        booking = new Booking(bookingData.id, bookingData.userId, bookingData.date, bookingData.roomNumber)
+    });
 
     it('should be a function', function() {
     expect(Booking).to.be.a('function');
