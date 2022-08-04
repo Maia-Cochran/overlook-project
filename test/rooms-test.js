@@ -14,7 +14,7 @@ describe('Room Info', () => {
             "bidet": true,
             "bedSize": "queen",
             "numBeds": 1,
-            "costPerNight": 358.4
+            "costPerNight": 358.4,
           }
         room = new Room(roomData)
     })

@@ -12,7 +12,7 @@ describe('Customer Info', () => {
                 "id": 3,
                 "name": "Kelvin Schiller"
         } 
-        customer = new Customer(customerData.id, customerData.name)
+        customer = new Customer(customerData)
     })
 
     it('should be a function', function() {

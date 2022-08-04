@@ -14,7 +14,7 @@ describe('Booking Info', () => {
             "date": "2022/04/22",
             "roomNumber": 15,
           }
-        booking = new Booking(bookingData.id, bookingData.userId, bookingData.date, bookingData.roomNumber)
+        booking = new Booking(bookingData)
     });
 
     it('should be a function', function() {
