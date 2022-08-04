@@ -1,6 +1,6 @@
 import chai from 'chai';
 import Customer from '../src/classes/customers';
-import customerData from '../src/data/customerData';
+// import customerData from '../src/data/customerData';
 const expect = chai.expect;
 
 describe('Customer Info', () => {
@@ -8,7 +8,11 @@ describe('Customer Info', () => {
     let customer;
     let customerData;
     beforeEach(() => {
-        customer = new Customer(customerData)
+        customerData = {
+                "id": 3,
+                "name": "Kelvin Schiller"
+        } 
+        customer = new Customer(customerData.id, customerData.name)
     })
 
     it('should be a function', function() {
