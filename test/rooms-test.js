@@ -1,6 +1,6 @@
 import chai from 'chai';
 import Room from '../src/classes/rooms';
-import roomData from '../src/data/roomData';
+// import roomData from '../src/data/roomData';
 const expect = chai.expect;
 
 describe('Room Info', () => {
@@ -8,6 +8,14 @@ describe('Room Info', () => {
     let room;
     let roomData;
     beforeEach(() => {
+        roomData =   {
+            "number": 1,
+            "roomType": "residential suite",
+            "bidet": true,
+            "bedSize": "queen",
+            "numBeds": 1,
+            "costPerNight": 358.4
+          }
         room = new Room(roomData)
     })
 
