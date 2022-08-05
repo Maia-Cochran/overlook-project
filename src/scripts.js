@@ -6,16 +6,16 @@ import {fetchAll} from './api-calls'
 
 
 //globalVariables
-let bookings;
-let customers;
-let rooms;
+let allBookingData;
+let allRoomData;
+let allCustomerData;
 const superFetch = () => {
     fetchAll()
     .then(data => {
         console.log(data)
-        bookings = data[0].bookings
-        rooms = data[1].rooms
-        customers = data[2].customers
+        allBookingData = data[0].bookings
+        allRoomData = data[1].rooms
+        allCustomerData = data[2].customers
     })
 }
 // This is the JavaScript entry file - your code begins here
