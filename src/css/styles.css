@@ -1,7 +1,74 @@
 * {
-  border: 3px solid purple;
+  border: 2px solid peachpuff;
+  font-family: Trebuchet, sans-serif;
 }
 body {
-  background: white;
-  /* radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+  background: gray;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  contain:content;
+}
+
+.top-banner-welcome-container {
+  float: top;
+  position: fixed;
+  height: 15vh;
+  width: auto;
+}
+
+.sidebar-navigation-container {
+  float: left;
+  width: 30%;
+  height: 85vh;
+  contain: content;
+  padding: 1px;
+}
+
+.booking-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  float: right;
+  width: 69%;
+  height: 85vh;
+  /* text-overflow: clip scroll; */
+  contain: content;
+}
+
+.reservation-card {
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  border-radius: 15%;
+  margin: 20px 10px 5px 20px;
+  height: 20%;
+  width: 40%;
+  contain: content;
+  /* padding: 1px; */
+}
+
+.book-room-button {
+  margin-top: -20%;
+  margin-bottom: 10%;
+}
+
+button {
+  margin: 5%;
+}
+
+/* p {
+  overflow: visible;
+  overflow-wrap: normal;
+} */
+/* ^^^SAVE FOR WHEN IMPORTING DATA^^^ */
+
+/* img {
+  height: 100%;
+  width: 40%;
+} */
+/* ^^^planned out image to suit figma planning doc something to check in styling later^^^ */
+
+.hidden {
+  display: none;
 }
