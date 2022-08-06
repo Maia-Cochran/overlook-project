@@ -1,14 +1,20 @@
+//IMPORTS 
 import {fetchAll} from './api-calls'
 import './css/styles.css';
-// An example of how you tell webpack to use a CSS (SCSS) file
-import './images/turing-logo.png'
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+// import './images/turing-logo.png'
+// import { postData } from './apiCalls';
+import Customer from './classes/customers';
+import Booking from './classes/bookings';
+import Room from './classes/rooms';
 
 
-//globalVariables
+//GLOBAL VARIABLES
 let allBookingData;
 let allRoomData;
 let allCustomerData;
+
+
+//LOAD DATA FUNCTIONS
 const superFetch = () => {
     fetchAll()
     .then(data => {
@@ -18,8 +24,7 @@ const superFetch = () => {
         allCustomerData = data[2].customers
     })
 }
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 
-//globalFunctions
+//EVENT LISTENERS
 window.addEventListener('load', superFetch)
+

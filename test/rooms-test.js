@@ -22,8 +22,8 @@ describe('Room Info', () => {
     it('should be a function', function() {
     expect(Room).to.be.a('function');
     });    
+    
     it('should be an instance of Room', function() {
         expect(room).to.be.an.instanceOf(Room);
-
     });
 });

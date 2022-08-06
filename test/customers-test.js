@@ -21,6 +21,5 @@ describe('Customer Info', () => {
 
     it('should be an instance of Customer', function() {
     expect(customer).to.be.an.instanceOf(Customer);
-
     });
 });

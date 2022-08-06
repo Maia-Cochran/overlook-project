@@ -2,6 +2,7 @@
   border: 2px solid peachpuff;
   font-family: Trebuchet, sans-serif;
 }
+
 body {
   background: gray;
   height: 100vh;
@@ -20,17 +21,17 @@ body {
 
 .sidebar-navigation-container {
   float: left;
-  width: 30%;
+  width: 25%;
   height: 85vh;
   contain: content;
-  padding: 1px;
+  /* padding: 1px; */
 }
 
 .booking-grid-container {
   display: flex;
   flex-wrap: wrap;
   float: right;
-  width: 69%;
+  width: 74%;
   height: 85vh;
   /* text-overflow: clip scroll; */
   contain: content;
@@ -38,6 +39,7 @@ body {
 
 .reservation-card {
   display: flex;
+  /* flex-wrap: wrap; */
   /* flex-direction: column; */
   text-align: center;
   border-radius: 15%;
