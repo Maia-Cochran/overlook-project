@@ -35,12 +35,12 @@ describe('Customer Info', () => {
     it('should be able to keep track of previous and current bookings', () => {
         // expect(customer.pastBookings).to.deep.equal([]);
         // expect(customer.currentBookings).to.deep.equal([]);
-        expect(customer.currentBookings).to.deep.equal([]);
+        expect(customer.bookings).to.deep.equal([]);
     });
     
     it('should be able to add a booking to currentBookings', () => {
         customer.makeNewReservation(booking);
-        expect(customer.currentBookings).to.deep.equal([booking]);
+        expect(customer.bookings).to.deep.equal([booking]);
     });
     // ^^^^THIS SHOULD BE IN THE BOOKINGS PERHAPS???^^^^
 });

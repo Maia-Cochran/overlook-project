@@ -7,28 +7,46 @@ import Customer from './classes/customers';
 import Booking from './classes/bookings';
 import Room from './classes/rooms';
 
+//QUERY SELECTORS
+let viewBookingsButtons = document.querySelector('.reservation-buttons')
 
 //GLOBAL VARIABLES
-let allBookingData;
-let allRoomData;
-let allCustomerData;
-let currCustomer;
+let bookingData;
+let roomData;
+let customerData;
+let customer;
+let currentCustomer;
+let bookingsPerCustomer;
+// let bookings = [];
 
+// const createCustomer = (id) => {
+//     const customer = customerData.filter(customer => customer.id === id);
+//     currentCustomer = new Customer(customer);
+//     // greetUser();
+//     // displayTrips();
+//     // populateOptions();
+//     // currentCustomer.findLastTripId(tripsData);
+// }
 //LOAD DATA FUNCTIONS
 const superFetch = () => {
     fetchAll()
     .then(data => {
-        console.log(data)
-        allBookingData = data[0].bookings
-        allRoomData = data[1].rooms
-        // console.log('ALL ROOM DATA: ', allRoomData)
-        allCustomerData = data[2].customers
-        currCustomer = new Customer(allCustomerData[Math.floor(Math.random() * allCustomerData.length)]);
-        allBookingData = new Booking(allBookingData);
-        // availableRoomsData = new Room()
-        console.log('currCustomer', currCustomer)
+        bookingData = data[0].bookings
+        roomData = data[1].rooms
+        customerData = data[2].customers
+        currentCustomer = new Customer(customerData[Math.floor(Math.random() * customerData.length)]);
+        console.log(currentCustomer)
+        // createCustomer(1);
+        // console.log(createCustomer(1))
+        // console.log('currCustomer', currCustomer)
+        // console.log('currCustomer Bookings', currCustomer.bookings)
+        // booking = new Booking(allBookingData);
+        // currCustomer.bookings = `${findBookingsByCustomerId()}`;
     })
 }
+
+
+
 // sortOnlyCurrentBookings(){
 //     //use this to sort the current bookings to only display the bookings from the array
 //     //should do this on page load??? 
@@ -52,4 +70,5 @@ const superFetch = () => {
 
 //EVENT LISTENERS
 window.addEventListener('load', superFetch)
+// viewBookingsButtons.addEventListener('click', findBookingsByCustomerId)
 

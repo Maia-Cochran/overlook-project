@@ -1,12 +1,36 @@
+import Booking from "./bookings";
 class Customer {
     constructor(customerData) {
         this.id = customerData.id;
         this.name = customerData.name;
-        this.currentBookings = [];
+        this.bookings = [];
+        // this.bookingData = allBookingData;
         // this.newReservations = [];
-        this.pastBookings = [];
-        this.totalDollarsSpent = customerData.totalDollarsSpent;
+        // this.pastBookings = [];
+        // this.totalDollarsSpent = customerData.totalDollarsSpent;
     }
+    // displayCustomerName = () => {
+
+    // } 
+    getCustomerBookings = (bookingData) => {
+        this.bookings = bookingData.filter((booking) => booking.userID === this.id)
+    }
+    // findBookingsByCustomerId = (customer) => {
+    //     // let bookings =[]
+    //     return allCustomerData.forEach(customer => {
+    //         const currBooking = this.bookingData.filter(item => item.userID === customer.id);
+    //             this.bookings.push({
+    //                 id: currBooking.id,
+    //                 userID: currBooking.userID,
+    //                 date: currBooking.date,
+    //                 roomNumber: currBooking.roomNumber,
+    //             })
+    //         })
+        // console.log('tomer', bookings)
+        // return bookings
+        // return currBooking
+    // }
+
     viewCurrentBookings(){
         //sort bookings from earliest to latest???
         //will give access to certain indices???
@@ -24,8 +48,7 @@ class Customer {
         //view history of reservations function should DISPLAY these in DOM manipulation in scripts file upon event listener
         //will ultimately create an array of bookings already chosen by customer
     }
-    makeNewReservation(newBooking){
-        return this.currentBookings.push(newBooking)
+    makeNewReservation(){
         //if the booking instance date matches the current selected date then return that date to current bookings
         //upon click of the button, this function should add the booking ID to the current reservation.... reduce???
         //should be moved into SCRIPTS??? unsure yet
