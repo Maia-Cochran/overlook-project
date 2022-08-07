@@ -8,67 +8,48 @@ import Booking from './classes/bookings';
 import Room from './classes/rooms';
 
 //QUERY SELECTORS
-let viewBookingsButtons = document.querySelector('.reservation-buttons')
+// let viewBookingsButtons = document.querySelector('.reservation-buttons')
 
 //GLOBAL VARIABLES
 let bookingData;
+let bookingsArray;
 let roomData;
-let customerData;
 let customer;
+let customerData;
 let currentCustomer;
+let currentBooking;
 let bookingsPerCustomer;
-// let bookings = [];
 
-// const createCustomer = (id) => {
-//     const customer = customerData.filter(customer => customer.id === id);
-//     currentCustomer = new Customer(customer);
-//     // greetUser();
-//     // displayTrips();
-//     // populateOptions();
-//     // currentCustomer.findLastTripId(tripsData);
-// }
+//EVENT LISTENERS
+window.addEventListener('load', superFetch)
+
+
 //LOAD DATA FUNCTIONS
-const superFetch = () => {
+function superFetch() {
     fetchAll()
     .then(data => {
         bookingData = data[0].bookings
         roomData = data[1].rooms
         customerData = data[2].customers
         currentCustomer = new Customer(customerData[Math.floor(Math.random() * customerData.length)]);
-        console.log(currentCustomer)
-        // createCustomer(1);
-        // console.log(createCustomer(1))
-        // console.log('currCustomer', currCustomer)
-        // console.log('currCustomer Bookings', currCustomer.bookings)
-        // booking = new Booking(allBookingData);
-        // currCustomer.bookings = `${findBookingsByCustomerId()}`;
+        currentCustomer.getCustomerBookingHistory(bookingData, roomData);
+        console.log('currCustomer', currentCustomer)
     })
 }
 
-
-
-// sortOnlyCurrentBookings(){
-//     //use this to sort the current bookings to only display the bookings from the array
-//     //should do this on page load??? 
-//     //can set minimum date for this for on page load
+// function displayRandomCustomerName( ) {
+//     welcomeUserMessage.innerText = `Howdy, ${ currentCustomer.name.split( ' ' )[ 0 ] }!`;
 // }
-        // calculateTotalDollarsSpent(){
-    //     return this.currentBookings.reduce((totalAmountSpent, currBooking) => {
-    //         totalAmountSpent += currBooking.costPerNight
-    //         return totalAmountSpent
-    //     }, 0)
-    //     //and room.costPerNight -(REFER TO DATA COMMENTED OUT RIGHT NOW TO SEE WHAT DATA WE USE FOR TEST)
-    // }
-    // calculateTotalDollarsSpent(){
-    //     return this.currentBookings.reduce((totalAmountSpent, currBooking) => {
-    //         if(currBooking.roomNumber === newRoom.number)
-    //         totalAmountSpent += currBooking.costPerNight
-    //         return totalAmountSpent
-    //     }, 0)
-    //     //and room.costPerNight -(REFER TO DATA COMMENTED OUT RIGHT NOW TO SEE WHAT DATA WE USE FOR TEST)
-    // }
 
-//EVENT LISTENERS
-window.addEventListener('load', superFetch)
+// getBookingByCustomerID(currentCustomer){
+// //     currentCustomer.bookings = []
+// //    bookingData.filter(booking => 
+// //     booking.userID === currentCustomer.id
+// //     currentCustomer.bookings.push(booking))
+//     // return currentCustomer.bookings
+// }
+
+
+// welcomeUserMessage.addEventListener('load', displayRandomCustomerName)
 // viewBookingsButtons.addEventListener('click', findBookingsByCustomerId)
 
