@@ -1,12 +1,8 @@
-import Booking from './bookings';
-import Customer from './customers';
-import Room from './rooms';
 class Hotel {
     constructor(bookingData, customerData, roomData){
         this.allBookings = bookingData;
         this.allCustomers = customerData;
         this.allRooms = roomData;
-        this.availableRooms = [];
     }
     findAvailableRooms(date){
         this.availableRooms = this.allRooms

@@ -7,22 +7,22 @@ body {
   background: gray;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   text-align: center;
   contain:content;
 }
 
-.top-banner-welcome-container {
+/* .top-banner-welcome-container {
   float: top;
   position: fixed;
   height: 15vh;
   width: auto;
-}
+} */
 
-.sidebar-navigation-container {
-  float: left;
+.welcome-customer-container{
+  /* float: left; */
   width: 25%;
-  height: 85vh;
+  height: 98vh;
   contain: content;
   /* padding: 1px; */
 }
@@ -30,16 +30,17 @@ body {
 .booking-grid-container {
   display: flex;
   flex-wrap: wrap;
-  float: right;
+  /* float: right; */
   width: 74%;
-  height: 85vh;
-  /* text-overflow: clip scroll; */
+  height: 98vh;
+  overflow: clip scroll;
   contain: content;
+  margin-bottom: 0px;
 }
 
 .reservation-card {
   display: flex;
-  /* flex-wrap: wrap; */
+  /* flex-wrap: nowrap; */
   /* flex-direction: column; */
   text-align: center;
   border-radius: 15%;
@@ -50,10 +51,10 @@ body {
   /* padding: 1px; */
 }
 
-.book-room-button {
+/* .book-room-button {
   margin-top: -20%;
   margin-bottom: 10%;
-}
+} */
 
 button {
   margin: 5%;
@@ -65,10 +66,10 @@ button {
 } */
 /* ^^^SAVE FOR WHEN IMPORTING DATA^^^ */
 
-/* img {
+img {
   height: 100%;
   width: 40%;
-} */
+}
 /* ^^^planned out image to suit figma planning doc something to check in styling later^^^ */
 
 .hidden {
