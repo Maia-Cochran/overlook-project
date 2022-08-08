@@ -12,7 +12,6 @@ describe('Booking Info', () => {
     });
 
     it('should be a function', function() {
-    console.log(booking)
         expect(Booking).to.be.a('function');
     });    
 

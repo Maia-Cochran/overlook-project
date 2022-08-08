@@ -22,11 +22,11 @@ describe('Customer Info', () => {
     expect(customer).to.be.an.instanceOf(Customer);
     });
 
-    it('should take in an customer id', () => {
+    it('should have an id', () => {
         expect(customer.id).to.equal(1)
     });
 
-    it('should take in an customer name', () => {
+    it('should have a name', () => {
         expect(customer.name).to.equal('Leatha Ullrich')
     });
 
