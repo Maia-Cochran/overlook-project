@@ -3,25 +3,32 @@
   font-family: Trebuchet, sans-serif;
 }
 
+/* Bright blue: #51e2f5
+
+Blue Green: #9df9ef
+
+Dusty White: #edf756
+
+Pink Sand: #ffa8B6
+
+Dark Sand: #a28089 */
+
 body {
-  background: gray;
   height: 100vh;
   display: flex;
-  /* flex-direction: column; */
   text-align: center;
   contain:content;
 }
 
-/* .top-banner-welcome-container {
-  float: top;
-  position: fixed;
-  height: 15vh;
-  width: auto;
-} */
+h1, h2 {
+  font-size: 32px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: italic;
+}
 
 .welcome-customer-container{
   /* float: left; */
-  width: 25%;
+  width: auto;
   height: 98vh;
   contain: content;
   /* padding: 1px; */
@@ -31,7 +38,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   /* float: right; */
-  width: 74%;
+  width: auto;
   height: 98vh;
   overflow: clip scroll;
   contain: content;
@@ -40,24 +47,45 @@ body {
 
 .reservation-card {
   display: flex;
-  /* flex-wrap: nowrap; */
-  /* flex-direction: column; */
   text-align: center;
   border-radius: 15%;
   margin: 20px 10px 5px 20px;
-  height: 20%;
+  height: 40%;
   width: 40%;
   contain: content;
-  /* padding: 1px; */
 }
 
-/* .book-room-button {
-  margin-top: -20%;
-  margin-bottom: 10%;
+.room-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  contain: content;
+}
+
+.book-room-button {
+  margin-top: 0;
+}
+
+/* button {
+  margin: 2%;
+  width: 40%;
+  align-self: center;
+  border-radius: 75%;
+  padding: 15px;
 } */
 
-button {
-  margin: 5%;
+.filter-by-room-preference-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  contain: content;
 }
 
 /* p {

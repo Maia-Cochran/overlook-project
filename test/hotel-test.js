@@ -37,15 +37,12 @@ describe('Hotel Info', function() {
     });
 
     it('should be able to track which rooms are availabile', () => {
-        hotel.findAvailableRooms("2022/04/22")
-        expect(hotel.availableRooms.length).to.equal(4);
+        expect(hotel.findAvailableRooms("2022/04/22").length).to.equal(4);
     });
 
     it('should be able to filter the list of available rooms by their roomType property', () => {
-        hotel.findAvailableRooms("2022/04/22")
-        hotel.filterRoomsByType('residential suite', "2022/04/22")
-        expect(hotel.availableRooms.length).to.equal(1)
-        expect(hotel.availableRooms).to.deep.equal([
+        expect(hotel.filterRoomsByType('residential suite', "2022/04/22").length).to.equal(1)
+        expect(hotel.filterRoomsByType('residential suite', "2022/04/22")).to.deep.equal([
             {
               number: 1,
               roomType: 'residential suite',
