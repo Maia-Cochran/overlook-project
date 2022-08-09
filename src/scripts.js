@@ -35,9 +35,9 @@ let availableRooms;
 
 //EVENT LISTENERS
 window.addEventListener('load', superFetch)
-datePicked.addEventListener('click', getSelectedDate)
+// datePicked.addEventListener('click', getSelectedDate)
 showAllAvailBtn.addEventListener('click', displayAvailableRoomsByDate)
-viewCustomerBookings.addEventListener('click', showBookingHistory)
+// viewCustomerBookings.addEventListener('click', showBookingHistory)
 
 // .addEventListener('click', findRoomType)
 
@@ -59,10 +59,10 @@ function show(elements){
     elements.classList.remove('hidden');
   }
 
-function getSelectedDate(){
-    const datePicked = document.getElementById('select-date-form').value
-    return datePicked
-}
+// function getSelectedDate(){
+//     const datePicked = document.getElementById('select-date-form').value
+//     return datePicked
+// }
 
 //GET DATA FUNCTIONS
 function superFetch() {
@@ -83,7 +83,7 @@ function superFetch() {
 }
 
 function displayCustomerInfo(){
-    welcomeCustomerMessage.innerText = `Howdy, ${currentCustomer.name.split( ' ' )[0]}!
+    welcomeCustomerMessage.innerText = `Howdy, ${currentCustomer.name.split(' ')[0]}!
     You have spent $${currentCustomer.calculateTotalDollarsSpent()} lodging with us!`;
 }
 
@@ -107,13 +107,11 @@ function displayCustomerBookings(){
             return myBookings.innerHTML = result;
     }
     
-    // <img src="./images/turing-logo.png" alt="turing logo">
-
     function displayAvailableRoomsByDate() {
         show(allFilterButtons);
         let date = datePicked.value
         availableRooms = hotel.findAvailableRooms(date)
-        const result = availableRooms.map((room, roomDetails) => {
+        const result = availableRooms.map((room) => {
             console.log('CRIES IN ROOMS', room)
             return `<section class='reservation-card' id=${room.id}>
             <img src="./images/turing-logo.png" alt="turing logo">
@@ -135,7 +133,7 @@ function displayCustomerBookings(){
 function findRoomType(type){
     let date = datePicked.value.split('-').join('/')
     availableRooms = hotel.filterRoomsByType(type, date)
-    console.log(availableRooms)
+    console.log('WHAT THE FUCK ARE WE DOING HERE:', availableRooms)
     const result = availableRooms.map(room => {
         console.log('ROOM?????', room)
         return `<section class='reservation-card' id=${room.id}>
@@ -152,14 +150,18 @@ function findRoomType(type){
         <button id="${room.id}" class="book-room-button">Book now!</button>
       </section>`
     }).join(' ');
-    return myBookings.innerHTML = result;
-    // let errorMessage = `We are extra super fiercely (RAWR) apologetic, but it seems there are no ${type} rooms available for ${date}!`
+    console.log('WHY THE FUCK????', result)
+    result ? myBookings.innerHTML = result : myBookings.innerHTML = 
+    `<section class="error-message">We are extra super fiercely apologetic, as it seems there are no ${type} rooms available for ${date}!
+    <p> :-( </p>
+    </section>`
  }
-
- function bookRoom(){
+// }
+ function bookRoom(e){
+    e.target.id === 
+    //need to create a function to add the booking to customer's bookings
     
-
- }
+}
 
 
 //need function to  interpoladurp the amount of money spent
@@ -172,11 +174,11 @@ function findRoomType(type){
 //need to unhide the filter buttons when I do this^^^
 //build out everything for iterations 1 & 2 before moving to accessibility and login page
 //^^^ in order to filter the AVAIL ROOMS by ROOM TYPE for the user
+//need to make sure my function for the adding bookings to the booking list includes an error message for no avail rooms
 // ^^^^^^^^DONE
 
-//need to create a function to actually add the booking to the bookings array for customer
 
-//need to make sure my function for the adding bookings to the booking list includes an error message for no avail rooms
+
 //username: customer50 (where 50 is the ID of the user) password: overlook2021
 //customer`${user.id}` <<<<< for the login for page function
 

@@ -19,7 +19,7 @@ h1, h2 {
 
 .welcome-customer-container{
   /* float: left; */
-  width: 25%;
+  width: auto;
   height: 98vh;
   contain: content;
   /* padding: 1px; */
@@ -29,7 +29,7 @@ h1, h2 {
   display: flex;
   flex-wrap: wrap;
   /* float: right; */
-  width: 74%;
+  width: auto;
   height: 98vh;
   overflow: clip scroll;
   contain: content;
@@ -69,6 +69,14 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  contain: content;
 }
 
 /* p {

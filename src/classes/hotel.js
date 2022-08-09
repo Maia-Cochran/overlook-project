@@ -10,6 +10,7 @@ class Hotel {
         let bookingDates = this.allBookings.filter(booking => booking.date === date.split('-').join('/'))
         bookingDates.forEach(bookedRoom => {
             let found = availableRooms.map(room => room.number).indexOf(bookedRoom.roomNumber)
+            // console.log('FOUND', found)
             availableRooms.splice(found, 1)
         })
        return availableRooms
@@ -17,6 +18,7 @@ class Hotel {
     filterRoomsByType(type, date){
         let result = this.findAvailableRooms(date)
         let filtered = result.filter(room => room.roomType === type)
+        // console.log('FILTERED', result)
         return filtered
     } 
 }
