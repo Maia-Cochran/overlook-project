@@ -1,16 +1,104 @@
+
+<!-- HOW TO IMPORT PHOTO -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <section class="top-banner-welcome-container">
+      <h1 class="title">Under Suite Sheets Hotel</h1>
+      <h2 class="motto">Exceptional lodging, nomad-er where life takes you. 🤸🏻 </h2>
+      <section hidden class="filter-by-room-preference-buttons-container">
+        <button id="show-available-residential-suites-button" class="room-type-buttons">Residential Suite</button>
+        <button id="show-available-suites-button" class="room-type-buttons">Suite</button>
+        <button id="show-available-single-rooms-button" class="room-type-buttons">Single Room</button>
+        <button id="show-available-junior-suites-button" class="room-type-buttons">Junior Suite</button>
+      </section>
+      <section class="sidebar-navigation-container">
+        <section class="welcome-user-container"> 
+          <h3 class="welcome-user-text">Howdy, [CUSTOMER NAME]! 🤠 </h3>
+          <h3 class="total-booking-cost-for-user">You have spent [TOTAL DOLLAR AMOUNT SPENT] lodging with us!</h3>
+        </section>
+        <section class="select-date-container">
+          <form class="select-date-form">
+            <label for="select-date-form">Find available rooms:</label>
+            <input type="date" id="user-booking-date" name="user-booking-date">
+            <span class="validity"></span>
+          </form>
+        </section>
+        <section class="user-reservation-container">
+          <div><button id="previous-reservations" class="reservation-buttons">Reservation History</button></div>
+          <div><button id="current-reservations" class="reservation-buttons">Current Reservations</button></div>
+        </section>          
+      </section>
+      <section id="grid-container" class="booking-grid-container">
+        <section id="reservation-card" class="reservation-card">
+          <section class="view-and-book-room">
+            <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+            <!-- ^^^CHANGE TO IMG FOR THE ALL BOOKINGS DISPLAY CARDS TO LOAD IN^^^ -->
+            <p id="room-info" class="room-info">ROOMS DATA WILL GO HERE FOR EACH ROOM ON EACH 'CARD'</p>
+            <p id="room-cost" class='room-cost'>Price for one-night stay: [undefined]</p>
+            <button id="book-room-button" class="book-room-button">Book now!</button>
+          </section>
+          </section>
+          <!-- <section id="reservation-card" class="reservation-card">
+            <section class="view-and-book-room">
+              <p id="room-info" class="room-info">ROOMS DATA WILL GO HERE FOR EACH ROOM ON EACH 'CARD'</p>
+              <p id="room-cost" class='room-cost'>Price for one-night stay: [undefined]</p>
+              <button id="reserve-room-button" class="reserve-room-button">Reserve now!</button>
+            </section>
+          </section>
+          <section id="reservation-card" class="reservation-card">
+            <section class="view-and-book-room">
+              <p id="room-info" class="room-info">ROOMS DATA WILL GO HERE FOR EACH ROOM ON EACH 'CARD'</p>
+              <p id="room-cost" class='room-cost'>Price for one-night stay: [undefined]</p>
+              <button id="reserve-room-button" class="reserve-room-button">Reserve now!</button>
+            </section>
+          </section> -->
+        </section>
+      </section>
+      <script src="bundle.js"></script>
+    </body>
+    </html>
+    
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    
+    <!-- <p>
+      <button id="show-all-available-button" class="room-type-buttons">Clear Preferences</button>
+    </p> -->
+    <!-- ^^^IDEA TO CLEAR FILTERS IF USER WOULD LIKE TO RETURN TO ALL AVAILABLE FOR THE CHOSEN DATE -->
+    
+    <!-- <p class="fallbackLabel">Enter your birthday:</p>
+      <div class="fallbackDatePicker">
+        <span>
+          <label for="day">Day:</label>
+          <select id="day" name="day">
+          </select>
+        </span>
+        <span>
+          <label for="month">Month:</label>
+          <select id="month" name="month">
+            <option selected>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+                </select>
+              </span>
+              <span>
+                <label for="year">Year:</label>
+                <select id="year" name="year">
+                </select>
+              </span>
+            </div>           
+          </form> -->
