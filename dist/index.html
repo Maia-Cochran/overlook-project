@@ -1,18 +1,16 @@
 
-<!-- HOW TO IMPORT PHOTO -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Under Suite Sheets Hotel - Traveler Extraordinaire</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="ffdab9"/>
   </head>
   <body>
-    <img src="./images/suite-sheets.png" alt="turing logo">
-    <section class="welcome-customer-container"> 
-        <h1 class="title">Under Suite Sheets Hotel</h1>
-        <h2 class="motto">Exceptional lodging, nomad-er where life takes you.</h2>
-        <h3 class="welcome-customer-text">[CUSTOMER NAME & TOTAL DOLLAR AMOUNT SPENT]</h3>
+    <section class="welcome-customer-container">
+      <h3 class="welcome-customer-text"></h3>
       <section class="select-date-container">
         <form class="calendar-form">
           <label for="select-date">Search for available rooms:</label>
@@ -22,30 +20,20 @@
       </section>
       <section class="user-reservation-container">
         <button id="show-available-rooms-button" class="reservation-buttons">Find Rooms!</button>
-        <button id="view-customer-bookings" class="reservation-buttons">Reservation History</button>
-      </section>          
-      <section class ="filter-by-room-preference-buttons-container">
-        Filter by type of room:
+      </section>
+      <section class ="filter-by-room-preference-buttons-container">Filter by room type:
         <button id="residential suite" class="room-type-buttons">residential suite</button>
         <button id="suite" class="room-type-buttons">suite</button>
         <button id="single room" class="room-type-buttons">single room</button>
         <button id="junior suite" class="room-type-buttons">junior suite</button>
       </section>
-      </section>
-      <section id="grid-container" class="booking-grid-container">
-        <section id="reservation-card" class="reservation-card">
-          <!-- <button class hidden="book-room-button">Book now!</button> -->
-        </section>
-      </section>
+      <h1>Under Suite Sheets Hotel</h1>
+      <h2>"Exceptional lodging, nomad-er where life takes you."</h2>
     </section>
-    <script src="bundle.js"></script>
-  </body>
+    <section id="grid-container" class="booking-grid-container">
+    </section>
+  </section>
+</section>
+<script src="bundle.js"></script>
+</body>
 </html>
-  
-
-    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-    
-    <!-- <p>
-      <button id="show-all-available-button" class="room-type-buttons">Clear Preferences</button>
-    </p> -->
-    <!-- ^^^IDEA TO CLEAR FILTERS IF USER WOULD LIKE TO RETURN TO ALL AVAILABLE FOR THE CHOSEN DATE -->

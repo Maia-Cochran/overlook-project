@@ -13,10 +13,10 @@ class Customer {
         })
     }
     calculateTotalDollarsSpent(){
-        return Number(this.bookingHistory.reduce((totalAmountSpent, currBooking) => {
+        return this.bookingHistory.reduce((totalAmountSpent, currBooking) => {
             totalAmountSpent += currBooking.roomDetails.costPerNight
             return totalAmountSpent
-        }, 0).toFixed(2)).toLocaleString('en-US')
+        }, 0).toLocaleString('en-US')
     }
 }
 
