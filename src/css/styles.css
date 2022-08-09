@@ -3,8 +3,17 @@
   font-family: Trebuchet, sans-serif;
 }
 
+/* Bright blue: #51e2f5
+
+Blue Green: #9df9ef
+
+Dusty White: #edf756
+
+Pink Sand: #ffa8B6
+
+Dark Sand: #a28089 */
+
 body {
-  background: gray;
   height: 100vh;
   display: flex;
   text-align: center;
