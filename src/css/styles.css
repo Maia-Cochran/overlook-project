@@ -1,23 +1,14 @@
+
 * {
-  border: 2px solid peachpuff;
-  font-family: Trebuchet, sans-serif;
+  font-family: Raleway;
 }
-
-/* Bright blue: #51e2f5
-
-Blue Green: #9df9ef
-
-Dusty White: #edf756
-
-Pink Sand: #ffa8B6
-
-Dark Sand: #a28089 */
 
 body {
   height: 100vh;
   display: flex;
   text-align: center;
-  contain:content;
+  contain: content;
+  background-color: honeydew;;
 }
 
 h1, h2 {
@@ -26,58 +17,85 @@ h1, h2 {
   font-style: italic;
 }
 
-.welcome-customer-container{
-  /* float: left; */
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-weight: normal; 
+}
+
+.welcome-customer-container {
+  font-size: medium;
   width: auto;
   height: 98vh;
   contain: content;
-  /* padding: 1px; */
+  background: #a28089;
+  padding: 2%;
 }
 
 .booking-grid-container {
   display: flex;
   flex-wrap: wrap;
-  /* float: right; */
+  padding: 2%;
   width: auto;
   height: 98vh;
   overflow: clip scroll;
   contain: content;
-  margin-bottom: 0px;
+  padding-bottom: 5%;
 }
 
 .reservation-card {
+  background: peachpuff;
   display: flex;
-  text-align: center;
+  font-size: smaller;
   border-radius: 15%;
   margin: 20px 10px 5px 20px;
-  height: 40%;
+  height: 30%;
+  min-width: 20%;
   width: 40%;
   contain: content;
+  border: 2px solid #a28089;
 }
 
 .room-info {
   display: flex;
-  flex-direction: column;
   flex-wrap: nowrap;
   contain: content;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}
+
+p { 
+  margin-top: 2px;
+  padding: 4px;
+  margin: 3px;
 }
 
 .book-room-button {
-  margin-top: 0;
+  border: peachpuff;
+  background: papayawhip;
+  height: auto;
+  width: auto;
+  float: right;
+  border-radius: 10px;
 }
 
-/* button {
-  margin: 2%;
-  width: 40%;
-  align-self: center;
-  border-radius: 75%;
-  padding: 15px;
-} */
+.show-available-rooms-buttons, .room-type-buttons {
+  display: flex;
+  padding: 1px;
+  justify-content: center;
+  width: auto;
+  text-align: center;
+  border-radius: 5%;
+}
 
 .filter-by-room-preference-buttons-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 6px;
 }
 
 .error-message {
@@ -88,18 +106,20 @@ h1, h2 {
   contain: content;
 }
 
-/* p {
-  overflow: visible;
-  overflow-wrap: normal;
-} */
-/* ^^^SAVE FOR WHEN IMPORTING DATA^^^ */
+button {
+  background: honeydew;
+}
 
 img {
   height: 100%;
   width: 40%;
 }
-/* ^^^planned out image to suit figma planning doc something to check in styling later^^^ */
 
 .hidden {
   display: none;
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url(https://fonts.google.com/betterspecimen/Raleway);
 }
