@@ -8,7 +8,7 @@ const fetchAll = () => {
     fetchData('http://localhost:3001/api/v1/rooms'), 
     fetchData('http://localhost:3001/api/v1/customers')])
 }
-// POST DATA FUNCTIONS
+
 const postData = (formData) => {
     return fetch('http://localhost:3001/api/v1/bookings',
     {

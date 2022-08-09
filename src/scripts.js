@@ -34,16 +34,11 @@ let customerData;
 let currentCustomer;
 let hotel;
 let availableRooms;
-// let datePicked;
+let newReservation;
 
 //EVENT LISTENERS
 window.addEventListener('load', superFetch)
-// datePicked.addEventListener('click', getSelectedDate)
 showAllAvailBtn.addEventListener('click', displayAvailableRoomsByDate)
-// bookRoomButton.addEventListener('click', bookRoom)
-// viewCustomerBookings.addEventListener('click', showBookingHistory)
-
-// .addEventListener('click', findRoomType)
 
 allFilterButtons.addEventListener('click', (e) => {
     findRoomType(e.target.id)
@@ -59,11 +54,11 @@ myBookings.addEventListener('click', (e) => {
 //HELPER FUNCTIONS
 function hide(elements){
     elements.classList.add('hidden');
-  }
+}
   
 function show(elements){
     elements.classList.remove('hidden');
-  }
+}
 
 //GET DATA FUNCTIONS
 function superFetch() {
@@ -73,7 +68,8 @@ function superFetch() {
         roomData = data[1].rooms
         customerData = data[2].customers
         hotel = new Hotel(bookingData, customerData, roomData)
-        currentCustomer = new Customer(customerData[Math.floor(Math.random() * customerData.length)]);
+        currentCustomer = new Customer(customerData[47]);
+        // currentCustomer = new Customer(customerData[Math.floor(Math.random() * customerData.length)]);
         currentCustomer.getCustomerBookingHistory(bookingData, roomData);
         console.log('currCustomer', currentCustomer)
         console.log('currCustomer NAME', currentCustomer.name)
@@ -125,7 +121,7 @@ function displayCustomerBookings(){
             <p>Number of Beds: ${room.numBeds}</p>
             <p id="${room.id}" class='room-cost'>Price for one-night stay: $${room.costPerNight}</p>
             </section>
-            <button id="${room.id}" class="book-room-button">Book now!</button>
+            <button id="${room.number}" class="book-room-button">Book now!</button>
           </section>`
         }).join(' ');
         return myBookings.innerHTML = result;
@@ -148,7 +144,7 @@ function findRoomType(type){
         <p>Number of Beds: ${room.numBeds}</p>
         <p id="${room.id}" class='room-cost'>Price for one-night stay: $${room.costPerNight}</p>
         </section>
-        <button id="${room.id}" class="book-room-button">Book now!</button>
+        <button id="${room.number}" class="book-room-button">Book now!</button>
       </section>`
     }).join(' ');
     // console.log('WHY THE FUCK????,' result)
@@ -162,7 +158,7 @@ function findRoomType(type){
     const newCalendarForm = new FormData(document.querySelector('.calendar-form'))
     let customerBookedRoom = {
       userID: currentCustomer.id, 
-      date: dayjs(newCalendarForm.get('select-date')).format('YYYY/MM/DD'),
+      date: dayjs(newCalendarForm.get('user-booking-date')).format('YYYY/MM/DD'),
       roomNumber: parseInt(e.target.id)
     }
     return customerBookedRoom
@@ -171,12 +167,16 @@ function findRoomType(type){
  function submitCreatedBooking (e) {
     e.preventDefault()
     let newBooking = createBookingForPost(e)
+    console.log('NEW BOOKING PLS', newBooking)
     let postBooking = postData(newBooking)
-    let promiseFetch = fetchData('bookings')
+    console.log('postBooking', postBooking)
+    let promiseFetch = fetchAll('bookings')
+    console.log('fetch bad bois', promiseFetch)
     Promise.all([postBooking, promiseFetch])
     .then(response => {
-        console.log('yeehaw!')
-        newReservation = new Booking(response[response.length -1])
+        console.log('what the actual fuck part 2', response[1])
+        console.log('yeehaw!', response)
+        newReservation = new Booking(response[1])
     }) 
 }
 
