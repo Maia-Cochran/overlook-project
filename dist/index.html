@@ -14,27 +14,25 @@
         <h3 class="welcome-customer-text">[CUSTOMER NAME & TOTAL DOLLAR AMOUNT SPENT]</h3>
       <section class="select-date-container">
         <form class="calendar-form">
-          <label for="select-date-form">Find available rooms:</label>
-          <input type="date" id="select-date-form" name="user-booking-date">
+          <label for="select-date">Search for available rooms:</label>
+          <input type="date" id="select-date" name="user-booking-date">
           <span class="validity"></span>
         </form>
       </section>
       <section class="user-reservation-container">
-        <button id="previous-reservations" class="reservation-buttons">Reservation History</button>
-        <button id="available-reservations" class="reservation-buttons">Show Me All Available Rooms</button>
+        <button id="show-available-rooms-button" class="reservation-buttons">Find Rooms!</button>
+        <button id="view-customer-bookings" class="reservation-buttons">Reservation History</button>
       </section>          
-      <section hidden class="filter-by-room-preference-buttons-container">
-        <button id="show-available-residential-suites-button" class="room-type-buttons">Residential Suite</button>
-        <button id="show-available-suites-button" class="room-type-buttons">Suite</button>
-        <button id="show-available-single-rooms-button" class="room-type-buttons">Single Room</button>
-        <button id="show-available-junior-suites-button" class="room-type-buttons">Junior Suite</button>
+      <section class ="filter-by-room-preference-buttons-container">
+        Filter by type of room:
+        <button id="residential suite" class="room-type-buttons">residential suite</button>
+        <button id="suite" class="room-type-buttons">suite</button>
+        <button id="single room" class="room-type-buttons">single room</button>
+        <button id="junior suite" class="room-type-buttons">junior suite</button>
       </section>
       </section>
       <section id="grid-container" class="booking-grid-container">
         <section id="reservation-card" class="reservation-card">
-          <img src="./images/turing-logo.png" alt="turing logo">
-          <section class="room-info">[TEXT]
-          </section>
         </section>
       </section>
     </section>
