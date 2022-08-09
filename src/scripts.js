@@ -158,7 +158,7 @@ function findRoomType(type){
     const newCalendarForm = new FormData(document.querySelector('.calendar-form'))
     let customerBookedRoom = {
       userID: currentCustomer.id, 
-      date: dayjs(newCalendarForm.get('user-booking-date')).format('YYYY/MM/DD'),
+      date: dayjs(newCalendarForm.get('user-booking-date')).format('MM/DD/YYYY'),
       roomNumber: parseInt(e.target.id)
     }
     return customerBookedRoom
