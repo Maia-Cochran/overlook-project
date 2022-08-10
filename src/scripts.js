@@ -38,17 +38,6 @@ let newReservation;
 let newBooking;
 let customer;
 
-    
-    
-//HELPER FUNCTIONS
-function hide(elements){
-    elements.classList.add('hidden')
-}
-
-function show(elements){
-    elements.classList.remove('hidden')
-}
-
 //EVENT LISTENERS
 window.addEventListener('load', superFetch)
 showAvailableRooms.addEventListener('click', displayAvailableRoomsByDate)
@@ -66,127 +55,124 @@ myBookings.addEventListener('click', (e) => {
 });
 
 //CUSTOMER DASHBOARD FUNCTIONS
+function superFetch() {
+    fetchAll()
+    .then(data => {
+        bookingData = data[0].bookings;
+        roomData = data[1].rooms;
+        customerData = data[2].customers;
+        hotel = new Hotel(bookingData, customerData, roomData);
+        })
+        hide(allFilterButtons);
+    }
+
+function displayCustomerInfo(name){
+    welcomeCustomerMessage.innerText = `Howdy, ${name}!
+    You've spent $${currentCustomer.calculateTotalDollarsSpent()} adventuring with us!`
+};
+
+function displayCustomerBookings(){
+    const result = currentCustomer.bookingHistory.map(booking => {
+        return `<section class='reservation-card' id=${booking.id}>
+        <img src="./images/suite-sheets-innerPic.png" alt=under suite sheets">
+        <section>
+        <p>Reservation Summary:</p>
+        <p> ${booking.date}</p>
+        <p>Room #${booking.roomDetails.number}</p>
+        <p>Room Type: ${booking.roomDetails.roomType}</p>
+        <p>Bidet Included: ${booking.roomDetails.bidet ? 'yes' : 'no'}</p>
+        <p>Bed Size: ${booking.roomDetails.bedSize}</p>
+        <p>Number of Beds: ${booking.roomDetails.numBeds}</p>
+        <p id="${booking.id}" class='room-cost'>Cost: $${booking.roomDetails.costPerNight}</p>
+        </section>
+        <button id="${booking.id}" class hidden="book-room-button">Book now!</button>
+        </section>`
+    }).join(' ')
+    result ? myBookings.innerHTML = result : myBookings.innerHTML = `<section class="error-message">You haven't booked with us yet, nomad! Pick a date to get started! <3
+    </section>`
+}
+
+function displayAvailableRoomsByDate(e) {
+    show(allFilterButtons)
+    let datePicked = document.getElementById('select-date').value
+    availableRooms = hotel.findAvailableRooms(datePicked)
+    const result = availableRooms.map((room) => {
+        return `<section class='reservation-card' id=${room.id}>
+        <img src="./images/suite-sheets-innerPic.png" alt=under suite sheets">
+        <section>
+        <p>${dayjs(datePicked).format('MMMM, D, YYYY')}</p>
+        <p>Room #${room.number}</p>
+        <p>Room Type: ${room.roomType}</p>
+        <p>Bidet Included: ${room.bidet ? 'yes' : 'no'}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of Beds: ${room.numBeds}</p>
+        <p id="${room.id}" class='room-cost'>Price: $${room.costPerNight}</p>
+        </section>
+        <button id="${room.number}" class="book-room-button">Book now!</button>
+        </section>`
+    }).join(' ');
+    result ? myBookings.innerHTML = result : myBookings.innerHTML = `<section class="error-message">We are extra super fiercely apologetic, as it seems there are no rooms available for ${datePicked}!
+    <p> :-( </p>
+    Pls don't hate us forever. </3
+    </section>`
+};
+
 function customerLogIn(e) {
     e.preventDefault()
-    const currentUsername = username.value
+    const currentUsername = username.value.split('customer')[1]
     const currentPassword = password.value
-    if(currentUsername === `customer${currentCustomer.id}` || currentPassword === `overlook2021`) {
-        console.log('CURR PASSWORD', currentCustomer.id)
-        const currentUserId = currentUsername
-        console.log('USERNAME', currentUserId)
-            // fetchData(currentUserId)
-            hide(customerLoginPage);
-            show(welcomeCustomerMessage);
-            show(myBookings);
-            displayCustomerInfo();
-            displayCustomerBookings();
-        } else {
-            return errorMessage.innerText = `YeeeeeNAW, my friend! The username or password is incorrect. Please try again.`
-        }
+    if(username.value.includes('customer') && currentPassword === `overlook2021`) {
+        console.log(customerData[0], currentUsername)
+        currentCustomer = new Customer(customerData.find(customer => customer.id === Number(currentUsername)))
+        hide(customerLoginPage);
+        currentCustomer.getCustomerBookingHistory(bookingData, roomData)
+        displayCustomerBookings();
+        return displayCustomerInfo(currentCustomer.name)
+    } else if (currentUsername === '' || currentPassword === '') {
+        errorMessage.innerText = `Oopsie! Looks like you missed a few fields! Fill both of them out to login.`
+    } else {
+        return errorMessage.innerText = `YeeeeeNAW, my friend! The username or password is incorrect. Please try again.`
     }
-    
-    function displayCustomerInfo(){
-        welcomeCustomerMessage.innerText = `Howdy, ${currentCustomer.name.split(' ')[0]}!
-        You've spent $${currentCustomer.calculateTotalDollarsSpent()} adventuring with us!`;
-    }
-    
-    function displayCustomerBookings(){
-        const result = currentCustomer.bookingHistory.map(booking => {
-            return `<section class='reservation-card' id=${booking.id}>
-            <img src="./images/suite-sheets-innerPic.png" alt=under suite sheets">
-            <section>
-            <p>Reservation Summary:</p>
-            <p> ${booking.date}</p>
-            <p>Room #${booking.roomDetails.number}</p>
-            <p>Room Type: ${booking.roomDetails.roomType}</p>
-            <p>Bidet Included: ${booking.roomDetails.bidet ? 'yes' : 'no'}</p>
-            <p>Bed Size: ${booking.roomDetails.bedSize}</p>
-            <p>Number of Beds: ${booking.roomDetails.numBeds}</p>
-            <p id="${booking.id}" class='room-cost'>Cost: $${booking.roomDetails.costPerNight}</p>
-            </section>
-            <button id="${booking.id}" class hidden="book-room-button">Book now!</button>
-            </section>`
-        }).join(' ')
-        result ? myBookings.innerHTML = result : myBookings.innerHTML = `<section class="error-message">You haven't booked with us yet, nomad! Pick a date to get started! <3
+}
+
+function findRoomType(type){
+    let datePicked = document.getElementById('select-date').value
+    availableRooms = hotel.filterRoomsByType(type, datePicked)
+    const result = availableRooms.map(room => {
+        return `<section class='reservation-card' id=${room.id}>
+        <img src="./images/suite-sheets-innerPic.png" alt=under suite sheets">
+        <section id="${room.id}">
+        <p>${dayjs(datePicked).format('MMMM, D, YYYY')}</p>
+        <p>Room #${room.number}</p>
+        <p>Room Type: ${room.roomType}</p>
+        <p>Bidet Included: ${room.bidet ? 'yes' : 'no'}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of Beds: ${room.numBeds}</p>
+        <p id="${room.id}" class='room-cost'>Price: $${room.costPerNight}</p>
+        </section>
+        <button id="${room.number}" class="book-room-button">Book now!</button>
         </section>`
-    }
-    
-    function displayAvailableRoomsByDate(e) {
-        show(allFilterButtons)
-        let datePicked = document.getElementById('select-date').value
-        availableRooms = hotel.findAvailableRooms(datePicked)
-        const result = availableRooms.map((room) => {
-            return `<section class='reservation-card' id=${room.id}>
-            <img src="./images/suite-sheets-innerPic.png" alt=under suite sheets">
-            <section>
-            <p>${dayjs(datePicked).format('MMMM, D, YYYY')}</p>
-            <p>Room #${room.number}</p>
-            <p>Room Type: ${room.roomType}</p>
-            <p>Bidet Included: ${room.bidet ? 'yes' : 'no'}</p>
-            <p>Bed Size: ${room.bedSize}</p>
-            <p>Number of Beds: ${room.numBeds}</p>
-            <p id="${room.id}" class='room-cost'>Price: $${room.costPerNight}</p>
-            </section>
-            <button id="${room.number}" class="book-room-button">Book now!</button>
-            </section>`
-        }).join(' ');
-        result ? myBookings.innerHTML = result : myBookings.innerHTML = `<section class="error-message">We are extra super fiercely apologetic, as it seems there are no rooms available for ${datePicked}!
-        <p> :-( </p>
-        Pls don't hate us forever. </3
-        </section>`
-    };
-    
-    function findRoomType(type){
-        let datePicked = document.getElementById('select-date').value
-        availableRooms = hotel.filterRoomsByType(type, datePicked)
-        const result = availableRooms.map(room => {
-            return `<section class='reservation-card' id=${room.id}>
-            <img src="./images/suite-sheets-innerPic.png" alt=under suite sheets">
-            <section id="${room.id}">
-            <p>${dayjs(datePicked).format('MMMM, D, YYYY')}</p>
-            <p>Room #${room.number}</p>
-            <p>Room Type: ${room.roomType}</p>
-            <p>Bidet Included: ${room.bidet ? 'yes' : 'no'}</p>
-            <p>Bed Size: ${room.bedSize}</p>
-            <p>Number of Beds: ${room.numBeds}</p>
-            <p id="${room.id}" class='room-cost'>Price: $${room.costPerNight}</p>
-            </section>
-            <button id="${room.number}" class="book-room-button">Book now!</button>
-            </section>`
-        }).join(' ');
-        result ? myBookings.innerHTML = result : myBookings.innerHTML = `<section class="error-message">We are extra super fiercely apologetic, as it seems there are no ${type} rooms available for ${datePicked}!
-        <p> :-( </p>
-        </section>`
-    }
-    
-    //GET DATA FUNCTIONS
-    function fetchData(url) {
-        return fetch(url)
-        .then(data => data.json())
-        .catch(err => console.log(err))
-    }
-    
-    function superFetch() {
-        fetchAll()
-        .then(data => {
-            bookingData = data[0].bookings;
-            roomData = data[1].rooms;
-            customerData = data[2].customers;
-            hotel = new Hotel(bookingData, customerData, roomData);
-            currentCustomer = new Customer(customerData);
-            currentCustomer.getCustomerBookingHistory(bookingData, roomData);
-            hide(allFilterButtons);
-        })
-    }
-    
-    function fetchAll() {
-        return Promise.all([fetchData('http://localhost:3001/api/v1/bookings'),
-        fetchData('http://localhost:3001/api/v1/rooms'),
-        fetchData('http://localhost:3001/api/v1/customers')])
-    }
-    
-    //POST DATA FUNCTIONS
-    function createBookingForPost(e){
+    }).join(' ');
+    result ? myBookings.innerHTML = result : myBookings.innerHTML = `<section class="error-message">We are extra super fiercely apologetic, as it seems there are no ${type} rooms available for ${datePicked}!
+    <p> :-( </p>
+    </section>`
+}
+
+//GET DATA FUNCTIONS
+function fetchData(url) {
+    return fetch(url)
+    .then(data => data.json())
+    .catch(err => console.log(err))
+}
+
+function fetchAll() {
+    return Promise.all([fetchData('http://localhost:3001/api/v1/bookings'),
+    fetchData('http://localhost:3001/api/v1/rooms'),
+    fetchData('http://localhost:3001/api/v1/customers')])
+}
+
+//POST DATA FUNCTIONS
+function createBookingForPost(e){
         const newCalendarForm = new FormData(document.querySelector('.calendar-form'))
         let customerBookedRoom = {
             userID: currentCustomer.id, 
@@ -204,7 +190,8 @@ function customerLogIn(e) {
         Promise.all([postBooking, promiseFetch])
         .then(response => {
             newReservation = new Booking(response[1])
-        }) 
+            currentCustomer.getCustomerBookingHistory()
+        })
     }
     
     function postData(formData){
@@ -221,5 +208,12 @@ function customerLogIn(e) {
         })
         .catch(error => console.log(error))
     }
+             
+//HELPER FUNCTIONS
+function hide(elements){
+    elements.classList.add('hidden')
+}
 
-        
+function show(elements){
+    elements.classList.remove('hidden')
+}
