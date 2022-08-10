@@ -19,8 +19,10 @@ describe('Booking Info', () => {
         expect(booking).to.be.an.instanceOf(Booking);
     });
 
-    it('should have an ID, userID, date, and a roomNumber', function() {
+    it('should have an ID', () => {
         expect(booking.id).to.equal('5fwrgu4i7k55hl6t6');
+    }) 
+    userID, date, and a roomNumber', function() {
         expect(booking.userID).to.equal(1);
         expect(booking.date).to.equal('2022/01/10');
         expect(booking.roomNumber).to.equal(3);

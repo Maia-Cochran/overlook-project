@@ -120,12 +120,14 @@ function displayAvailableRoomsByDate(e) {
 function customerLogIn(e) {
     e.preventDefault()
     const currentUsername = username.value.split('customer')[1]
+    console.log('1', currentUsername)
     const currentPassword = password.value
     if(username.value.includes('customer') && currentPassword === `overlook2021`) {
-        console.log(customerData[0], currentUsername)
         currentCustomer = new Customer(customerData.find(customer => customer.id === Number(currentUsername)))
+        console.log('2', currentCustomer)
         hide(customerLoginPage);
         currentCustomer.getCustomerBookingHistory(bookingData, roomData)
+        console.log('3', currentCustomer)
         displayCustomerBookings();
         return displayCustomerInfo(currentCustomer.name)
     } else if (currentUsername === '' || currentPassword === '') {
@@ -181,7 +183,6 @@ function createBookingForPost(e){
         }
         return customerBookedRoom
     }
-    
     function submitCreatedBooking(e){
         e.preventDefault()
         let newBooking = createBookingForPost(e)
@@ -190,11 +191,11 @@ function createBookingForPost(e){
         Promise.all([postBooking, promiseFetch])
         .then(response => {
             newReservation = new Booking(response[1])
-            currentCustomer.getCustomerBookingHistory()
+            currentCustomer.getCustomerBookingHistory(bookingData, roomData)
         })
     }
     
-    function postData(formData){
+function postData(formData){
         return fetch('http://localhost:3001/api/v1/bookings',
         {
             method: "POST",
@@ -207,7 +208,7 @@ function createBookingForPost(e){
             console.log(data)
         })
         .catch(error => console.log(error))
-    }
+}
              
 //HELPER FUNCTIONS
 function hide(elements){

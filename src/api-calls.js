@@ -1,4 +1,0 @@
-
-
-// export {fetchAll}
-// export {postData}

@@ -1,4 +1,3 @@
-
 * {
   font-family: Raleway;
 }
@@ -106,8 +105,30 @@ p {
   contain: content;
 }
 
-button {
+.customer-log-in-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+.username-container, .login-container { 
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: auto;
+  margin: 5%;
+}
+
+.log-in, .username, .passowrd {
+  margin: 5px;
+  width: auto;
+}
+
+input, button {
+  margin: 3%;
   background: honeydew;
+  border-radius: 4%;
 }
 
 img {

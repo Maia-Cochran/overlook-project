@@ -6,7 +6,7 @@ class Customer {
         this.bookingHistory = [];
     }
     getCustomerBookingHistory(bookingData, roomData){
-       this.bookingHistory = bookingData.filter((booking) => (booking.userID === this.id))
+       this.bookingHistory = bookingData.filter(booking => (booking.userID === this.id))
         .map(item => new Booking(item))
         this.bookingHistory.forEach(booking => {
           booking.getRoomInfo(roomData)
