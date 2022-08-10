@@ -21,16 +21,27 @@ describe('Booking Info', () => {
 
     it('should have an ID', () => {
         expect(booking.id).to.equal('5fwrgu4i7k55hl6t6');
-    }) 
-    userID, date, and a roomNumber', function() {
-        expect(booking.userID).to.equal(1);
-        expect(booking.date).to.equal('2022/01/10');
-        expect(booking.roomNumber).to.equal(3);
-    })
+    });
     
-    it('should match room number with booking number', function () {
+    it('should have an userID', () => {
+        expect(booking.userID).to.equal(1);
+    });
+    
+    it('should have an date', () => {
+        expect(booking.date).to.equal('2022/01/10');
+    });
+    
+    it('should have a roomNumber', () => {
+        expect(booking.roomNumber).to.equal(3);
+    });
+    
+    it('should match room number with booking number', () => {
         booking.getRoomInfo(roomData);
         expect(booking.roomDetails).to.be.an.instanceOf(Room);
         expect(booking.roomDetails.number).to.equal(3);
+    });
+
+    it('should have number to match booking number', () => {
+        expect(booking.roomDetails).to.equal();
     });
 });

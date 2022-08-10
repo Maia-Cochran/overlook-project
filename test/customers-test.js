@@ -81,6 +81,7 @@ describe('Customer Info', () => {
             }
           ]);
     });
+    
     it('should calculate the total money spent on bookings per customer', function(){
         customer.getCustomerBookingHistory(bookingData, roomData)
         expect(customer.calculateTotalDollarsSpent()).to.equal('1,308.69');

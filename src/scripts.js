@@ -13,6 +13,7 @@ const customerLoginPage = document.querySelector('.customer-login-page')
 const welcomeCustomerMessage = document.querySelector('.welcome-customer-text');
 const myBookings = document.querySelector('.booking-grid-container')
 const bookRoomButton = document.querySelector('.book-room-button')
+const goHomeButton = document.querySelector('.go-home')
 const showAvailableRooms = document.getElementById('show-available-rooms-button') 
 const allFilterButtons = document.querySelector('.filter-by-room-preference-buttons-container')
 const roomTypeButtons = document.querySelectorAll('.room-type-buttons')
@@ -42,6 +43,7 @@ let customer;
 window.addEventListener('load', superFetch)
 showAvailableRooms.addEventListener('click', displayAvailableRoomsByDate)
 loginButton.addEventListener('click', customerLogIn)
+goHomeButton.addEventListener('click', displayCustomerBookings)
 
 allFilterButtons.addEventListener('click', (e) => {
     findRoomType(e.target.id)
@@ -53,6 +55,8 @@ myBookings.addEventListener('click', (e) => {
     }
     return submitCreatedBooking(e)
 });
+
+
 
 //CUSTOMER DASHBOARD FUNCTIONS
 function superFetch() {

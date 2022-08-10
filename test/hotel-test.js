@@ -30,12 +30,18 @@ describe('Hotel Info', function() {
     expect(hotel).to.be.an.instanceOf(Hotel);
     });
 
-    it('should have all bookings, customers, and rooms', () => {
+    it('should have all bookings', () => {
         expect(hotel.allBookings).to.equal(bookingData);
-        expect(hotel.allCustomers).to.equal(customerData);
-        expect(hotel.allRooms).to.equal(roomData);
     });
 
+    it('should have all customers', () => {
+        expect(hotel.allCustomers).to.equal(customerData);
+    });
+
+    it('should have all rooms', () => {
+        expect(hotel.allRooms).to.equal(roomData);
+    });
+    
     it('should be able to track which rooms are availabile', () => {
         expect(hotel.findAvailableRooms("2022/04/22").length).to.equal(4);
     });
