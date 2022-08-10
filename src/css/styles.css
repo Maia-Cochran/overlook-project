@@ -116,10 +116,5 @@ img {
 }
 
 .hidden {
-  display: none;
-}
-
-@font-face {
-  font-family: Raleway;
-  src: url(https://fonts.google.com/betterspecimen/Raleway);
+  display: none !important;
 }
