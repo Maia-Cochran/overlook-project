@@ -1,6 +1,6 @@
 //IMPORTS 
-import {fetchAll} from './api-calls'
-import {postData} from './api-calls'
+// import {fetchAll} from './api-calls'
+// import {postData} from './api-calls'
 import './css/styles.css';
 import './images/suite-sheets.png'
 import './images/suite-sheets-innerPic.png'
@@ -127,6 +127,8 @@ function fetchData(url) {
         .catch(err => console.log(err))
 }
 
+
+
 function superFetch() {
     fetchAll()
     .then(data => {
@@ -143,14 +145,21 @@ function superFetch() {
     })
 }
 
+function fetchAll() {
+    return Promise.all([fetchData('http://localhost:3001/api/v1/bookings'),
+    fetchData('http://localhost:3001/api/v1/rooms'),
+    fetchData('http://localhost:3001/api/v1/customers')])
+}
+
 //POST DATA FUNCTIONS
 function createBookingForPost(e){
     const newCalendarForm = new FormData(document.querySelector('.calendar-form'))
     let customerBookedRoom = {
         userID: currentCustomer.id, 
-        date: dayjs(newCalendarForm.get('user-booking-date')).format('MM/DD/YYYY'),
+        date: dayjs(newCalendarForm.get('user-booking-date')).format('YYYY/MM/DD'),
         roomNumber: parseInt(e.target.id)
     }
+    console.log('FOR YOU CLEVELAND REAL MVP: ', customerBookedRoom)
     return customerBookedRoom
 }
     
@@ -164,6 +173,28 @@ function submitCreatedBooking (e) {
         newReservation = new Booking(response[1])
     }) 
 }
+
+function postData(formData) {
+    return fetch('http://localhost:3001/api/v1/bookings',
+        {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(data => data.json()).then(data => {
+            console.log('187', data)
+        // .then(response => {
+        //     if (!response.ok) {
+        //         throw new Error(response.status + " " + response.statusText)
+        //     } else {
+        //         return response.json()
+        //     }
+        })
+        // .catch(error => console.log(error))
+}
+
                 
 //HELPER FUNCTIONS
 function hide(elements){
