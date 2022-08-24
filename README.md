@@ -1,6 +1,6 @@
 # Overlook Project
 [Project Spec](https://frontend.turing.edu/projects/overlook.html)
-[View Deployed Site Here]()
+
 ## Abstract
 ## Application Demo
 ## Technologies
