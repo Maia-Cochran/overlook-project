@@ -1,4 +1,5 @@
-# Overlook Project
+# Under Suite Sheets
+## Hotel Booking Application
 [Project Spec](https://frontend.turing.edu/projects/overlook.html)
 
 ## Install & Set Up
